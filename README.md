@@ -1,1 +1,21 @@
-# poker
+# Poker Tools Application 
+#### Video Demo:  https://youtu.be/P9M1dP4HFeU
+#### Description: CS50x final project: a poker tool for helping poker players
+
+## Overview:
+This CS50x project is a poker tools application designed to poker players and to make their decisions more effiecient. The app uses a graphical user interface and has two tabs fot the two main functionality (it can be extended): one of them is a random number generator which can be triggered by any mouse clicks and also it udpdates itself every 10 seconds. The second tab is good for calculating chance (%) of winning given two poker holding and a board.
+
+## Designing and functionality:
+After implementing some of the functionalities I chose to restructure and make it object oriented rather the procedural. The reasons for that is to maintain better structure and readability, it makes the application more robust and for reusing the structure of the this widget for possible extensions. The frontend structure is made with the tkinter library implemented in the 'app.py' file. The size of the window is small enough in order to fit in a small area on any display, thus it can be used real time. I chose to use tabs instead of one big page, to fit in a small area. Also the functions can be separated this way, and the application is more user friendly. Simple elements then have been added to it, like buttons, text fields, background colour etc. Later the tabs can be extended with more functionality in future updates. The entry field for the cards accepts data in the following format "AsKc" for example, so the functions in treys library can accept it, which then converts it to numbers for representing the current hand. 
+The backend logic is included in the 'poker.py' file. It handles the equity calculations with the help of treys package. It calculates which players wins on the actual runout, my task was to make a Monte Carlo simulation of it. In order not to take too much computing capacity I maximized the number of runs by 5000, otherwise the time that it takes to run the calculation is too long, in case of preflop calculations. For better visual the field of the player who has less equity is coloured with red, the player of the player with more equity has a colour of green, providing a quick visueal cue for the users. Then these numbers are rounded to two decimals for readability and precision. 
+The random number generater tab is triggered by mouseclicks otherwise it updates every 10 seconds, in order to save time and effort. This allows the users to get fresh random values without the need to click every time. To generate random numbers I used Python's random library. The app.py has three main method functions, one for calculating the hand equities in the second tab. The other two function is related to update the random number in the first tab. 
+
+## Future improvements:
+
+
+### Optimization: 
+A huge improvement can be made if we store the preflop equities instead of calculating it over and over every time, which is too resource intensive. One way of storing would be to save it into a data file or with the help of the use of a data base, for example using sqlite3. In this case the calculations can be pretty precise, because it only has to be calculated once. An other improvement can be done by checking the input, since now it is accepting any character, which can lead to errors. So the format should be checked. It can be done by implementing it with for example with the Python's regex library, ensuring the input is a valid poker hand. Moreover, the user experience can be enhanced by adding more informative error messages and signals for users to see the correct input format. 
+
+
+### New features: 
+The equity calculator can be extended to calculate equities versus range or calculating equities with more than two players. Other tabs can be added for example preflop strategy adviser, or pot odds calculator. Also, user experience can definetely be improved, whith more pictures, or adjusting the colors for better user experience. Adding a graphical representation of the equity calculations in a range vs range scenario could be really beneficial, and see the the equitiy distribution of the hands. Using Matplotlib would be a greate tool for that. Another tab could be preflop advisor, which loads the preflop chart from a database. These enhancements would definetely make this app's utility better for the users.
